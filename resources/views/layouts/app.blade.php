@@ -33,21 +33,16 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img class="logotype" src="/logo.svg" alt="crop logotype">{{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
+                <div class="navbar" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto main-menu-list">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-main link-add-culture">
+                            <button type="button" class="btn btn-main link-add-culture d-none d-md-block">
                                 <a href="/culture/create" class="btn-link" role="button">Добавити пропозицію</a>
+                            </button>
+                            <button type="button" class="btn btn-main link-add-culture d-block d-md-none">
+                                <a href="/culture/create" class="btn-link" role="button"><span class="material-icons-outlined">add</span></a>
                             </button>
                             <button type="button" class="btn btn-main dropdown-toggle dropdown-toggle-split" id="show_proposal" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="visually-hidden">Продам/Куплю</span>
@@ -76,39 +71,53 @@
                             @endif
                         @else
                             <li class="nav-item">
+                                <button type="button" class="btn btn-main link-add-culture d-none d-md-block">
+                                    <a href="{{ route('sklads') }}" class="btn-link" role="button">Склади</a>
+                                </button>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-main link-add-culture d-none d-md-block">
+                                        <a href="{{ route('cabinet') }}" class="btn-link" role="button">Особистий кабінет</a>
+                                    </button>
+                                    <button type="button" class="btn btn-main link-add-culture d-block d-md-none">
+                                        <a href="/culture/create" class="btn-link" role="button">
+                                            <span class="material-icons-outlined">account_circle</span>
+                                        </a>
+                                    </button>
+                                    <button type="button" class="btn btn-main dropdown-toggle dropdown-toggle-split" id="show_personal" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span class="visually-hidden">Особистий кабінет</span>
+                                    </button>
+                                    <ul class="dropdown-menu w dropdown-menu-end" aria-labelledby="show_personal">
+{{--                                        <li><a class="dropdown-item dropdown-item-with-icon" href="{{ route('sklads') }}">--}}
+{{--                                                <span class="material-icons-outlined">maps_home_work</span>--}}
+{{--                                                <span>Склади</span>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+                                        <li><a class="dropdown-item dropdown-item-with-icon" href="/settings">
+                                                <span class="material-icons-outlined">manage_accounts</span>
+                                                <span>Налаштування</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a><hr class="dropdown-divider"></a>
+                                            <a class="dropdown-item dropdown-item-with-icon" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                                <span class="material-icons-outlined">logout</span>
+                                                <span>Вийти</span>
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link d-flex" href="#" role="button">
                                     <span class="material-icons-outlined md-36">notifications</span>
                                 </a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <span class="material-icons-outlined md-36">account_circle</span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item dropdown-item-with-icon" href="{{ route('cabinet') }}">
-                                        <span class="material-icons-outlined">dashboard</span>
-                                        <span>Кабінет</span>
-                                    </a>
-                                    <a class="dropdown-item dropdown-item-with-icon" href="{{ route('sklads') }}">
-                                        <span class="material-icons-outlined">maps_home_work</span>
-                                        <span>Склади</span>
-                                    </a>
-                                    <a class="dropdown-item dropdown-item-with-icon" href="/settings">
-                                        <span class="material-icons-outlined">manage_accounts</span>
-                                        <span>Налаштування</span>
-                                    </a>
-                                    <a><hr class="dropdown-divider"></a>
-                                    <a class="dropdown-item dropdown-item-with-icon" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                        <span class="material-icons-outlined">logout</span>
-                                        <span>Вийти</span>
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
                             </li>
                         @endguest
                     </ul>
@@ -116,8 +125,9 @@
             </div>
         </nav>
         @guest
-            <div class="alert alert-danger text-center" role="alert">
+            <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
                 Увага! Ви не авторизовані, деякі функції для вас вимкнено
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endguest
         <main class="my-5">

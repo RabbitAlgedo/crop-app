@@ -28,8 +28,11 @@ export default {
 .culture-price {
     position: relative;
     bottom: -22px;
-    text-decoration: underline;
     left: -5px;
+
+    font-size: 8px;
+    text-decoration: underline;
+
     background: #f2f2f2;
 }
 .selling .culture-price {
@@ -47,7 +50,8 @@ export default {
 .pin {
     width: 30px;
     height: 30px;
-    border-radius: 50% 50% 50% 0;
+    border-radius: 50%;
+    padding: 2px;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -69,10 +73,12 @@ export default {
     animation-duration: 1s;
 }
 .pin img {
-    content: '';
     width: 22px;
+    background: white;
+    border-radius: 50%;
+    padding: 4px;
     height: 22px;
-    margin: 4px 0 0 4px;
+    margin: 2px 1px 0px 2px;
     position: absolute;
     transform: rotate(45deg);
 }
@@ -84,7 +90,7 @@ export default {
     position: absolute;
     left: 50%;
     top: 50%;
-    margin: 11px 0px 0px -12px;
+    margin: -12px 0px 0px -12px;
     z-index: -2;
 }
 .pulse:after {

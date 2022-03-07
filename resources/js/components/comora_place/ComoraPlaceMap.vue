@@ -9,15 +9,24 @@
                     </div>
                     <div class="col-md-4">
                         <form @submit.prevent="update">
+                            <!-- Назва місця -->
                             <div class="form-group my-2">
                                 <label for="name">Назва</label>
                                 <input type="text" id="name" v-model="form.name" class="form-control">
                             </div>
+
+                            <!-- Адрес місця -->
                             <div class="form-group my-2">
                                 <label for="address">Адрес</label>
-                                <input type="text" id="address" v-model="form.address" class="form-control" disabled>
+                                <gmap-autocomplete @place_changed="updateAddress"
+                                                   :placeholder="form.address"
+                                                   id="address"
+                                                   class="form-control"
+                                                   :options="{fields: ['geometry', 'formatted_address', 'address_components']}"
+                                />
                             </div>
 
+                            <!-- Тип місця -->
                             <div class="row mb-3">
                                 <label for="place_type" class="col-form-label">Тип</label>
                                 <div class="col-md-6">
@@ -34,9 +43,11 @@
                             <button type="submit" class="btn btn-primary my-2">Зберегти</button>
                         </form>
                     </div>
+
+                    <!-- Карта -->
                     <div class="col-md-8">
-                        <gmap-map :center="startLocation" :zoom="zoom" :options="options" style="width: 100%; height: 350px;">
-                            <gmap-marker :position="placeLocation" :draggable="true" @drag="updateCoordinates" @dragend="updateMapCenter"></gmap-marker>
+                        <gmap-map :center="currentPlace" :zoom="zoom" :options="options" style="width: 100%; height: 350px;">
+                            <gmap-marker :position="currentPlace" :draggable="false"></gmap-marker>
                         </gmap-map>
                     </div>
                 </div>
@@ -56,20 +67,14 @@ export default {
                 display: false,
                 status: ''
             },
-            startLocation: {
+            currentPlace: {
                 lat: 49.1280915,
                 lng: 30.8602691
-            },
-            placeLocation: {
-                lat: '',
-                lng: ''
             },
             form: {
                 name: null,
                 address: null,
-                place_type: null,
-                lat: null,
-                lng: null
+                place_type: null
             },
             options: {
                 mapId: 'e05c23c1b569a6bf',
@@ -93,19 +98,14 @@ export default {
         this.getLocationData()
     },
     methods: {
+        // Апдейт місця
         async update() {
-            var lat = this.form.lat
-            lat = lat.toString()
-
-            var lng = this.form.lng
-            lng = lng.toString()
-
             await this.axios.post('/api/place/' + this.id, {
                 name: this.form.name,
                 place_type: this.form.place_type,
                 address: this.form.address,
-                lat: lat,
-                lng: lng,
+                lat: this.currentPlace.lat.toString(),
+                lng: this.currentPlace.lng.toString(),
                 _method: 'patch'
             })
             .then((response) => {
@@ -116,6 +116,8 @@ export default {
                 console.log(error);
             });
         },
+
+        // Id місця
         getPlaceId() {
             this.id = document.getElementById("place_data").getAttribute('data-place-id')
         },
@@ -124,47 +126,40 @@ export default {
                 this.form.name = response.data[0].name
                 this.form.address = response.data[0].address
 
-                var lat = parseFloat(response.data[0].lat)
-                var lng = parseFloat(response.data[0].lng)
-
-                this.form.lat = lat
-                this.form.lng = lng
-
-                this.startLocation.lat = lat
-                this.startLocation.lng = lng
-
-                this.placeLocation.lat = lat
-                this.placeLocation.lng = lng
+                this.currentPlace = {
+                    lat: parseFloat(response.data[0].lat),
+                    lng: parseFloat(response.data[0].lng)
+                }
             })
         },
-        updateCoordinates(location) {
-            this.placeLocation = {
-                lat: location.latLng.lat(),
-                lng: location.latLng.lng(),
-            };
-        },
-        updateMapCenter(location) {
-            this.startLocation = {
-                lat: location.latLng.lat(),
-                lng: location.latLng.lng(),
-            }
+        // updateMapCenter(location) {
+        //     this.startLocation = {
+        //         lat: location.latLng.lat(),
+        //         lng: location.latLng.lng(),
+        //     }
+        //
+        //     this.form.lat = location.latLng.lat()
+        //     this.form.lng = location.latLng.lng()
+        //
+        //     this.getLocationAddress()
+        // },
+        // getLocationAddress() {
+        //     var geocoder = new google.maps.Geocoder();
+        //
+        //     geocoder.geocode({
+        //         'latLng': this.startLocation
+        //     }, (results) => {
+        //         this.updateAddress(results[1].formatted_address)
+        //     });
+        // },
 
-            this.form.lat = location.latLng.lat()
-            this.form.lng = location.latLng.lng()
-
-            this.getLocationAddress()
-        },
-        getLocationAddress() {
-            var geocoder = new google.maps.Geocoder();
-
-            geocoder.geocode({
-                'latLng': this.startLocation
-            }, (results) => {
-                this.updateAddress(results[1].formatted_address)
-            });
-        },
+        // Адрес в строці та координати
         updateAddress(address) {
-            this.form.address = address
+            this.currentPlace = {
+                lat: address.geometry.location.lat(),
+                lng: address.geometry.location.lng()
+            }
+            this.form.address = address.formatted_address
         }
     },
 }

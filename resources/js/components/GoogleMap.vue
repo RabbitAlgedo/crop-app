@@ -30,7 +30,6 @@
                 :options="options"
                 style="width:100%;  height: 90vh;"
             >
-<!--                <place-marker :filters="filters.type" />-->
                 <div v-for="place in markers.type">
                     <gmap-custom-marker v-show="filters.type.includes(place.place_type)"
                                         :key="place.id"
@@ -47,6 +46,14 @@
                                         :marker="{ lat: culture.lat, lng: culture.lng }"
                     >
                         <culture-icon :culture="culture" v-on:openInfoWindowCulture="openInfoWindowCulture" />
+                    </gmap-custom-marker>
+                </div>
+
+                <div v-for="region in delivery">
+                    <gmap-custom-marker :key="region.id"
+                                        :draggable="false"
+                                        :marker="{ lat: region.position.lat, lng: region.position.lng }">
+                        <avaible-delivery :types="region.types" />
                     </gmap-custom-marker>
                 </div>
 
@@ -107,10 +114,12 @@ import PlaceMarker from "./place/PlaceMarker";
 import PlaceIcon from "./markers/PlaceIcon";
 import CultureList from "./prices/cultureList";
 import FavoriteButton from "./favoriteButton";
+import AvaibleDelivery from "./avaibleDelivery";
 
 export default {
     name: "AddGoogleMap",
     components: {
+        AvaibleDelivery,
         FavoriteButton,
         CultureList,
         PlaceIcon,
@@ -154,6 +163,92 @@ export default {
                 type: [],
                 cultures: []
             },
+            delivery: {
+                ternopil: {
+                    id: 0,
+                    position: {
+                        lat: 49.748405,
+                        lng: 25.5626497
+                    },
+                    types: [
+                        {
+                            name: 'EXW',
+                            producers: [
+                                {
+                                    id: 1,
+                                    name: 'ОЛІЯР'
+                                },
+                                {
+                                    id: 2,
+                                    name: 'МХП',
+                                },
+                            ]
+                        },
+                        {
+                            name: 'FCA',
+                            producers: [
+                                {
+                                    id: 1,
+                                    name: 'ОЛІЯР'
+                                }
+                            ]
+                        },
+                    ]
+                },
+                lviv: {
+                    id: 1,
+                    position: {
+                        lat: 50.0327787,
+                        lng: 23.9421962
+                    },
+                    types: [
+                        {
+                            name: 'EXW',
+                            producers: [
+                                {
+                                    id: 1,
+                                    name: 'ОЛІЯР'
+                                },
+                                {
+                                    id: 2,
+                                    name: 'МХП',
+                                },
+                            ]
+                        }
+                    ]
+                },
+                poltava: {
+                    id: 2,
+                    position: {
+                        lat: 49.7920134,
+                        lng: 34.5263093
+                    },
+                    types: [
+                        {
+                            name: 'EXW',
+                            producers: [
+                                {
+                                    id: 1,
+                                    name: 'ОЛІЯР'
+                                },
+                                {
+                                    id: 2,
+                                    name: 'МХП',
+                                },
+                            ]
+                        },
+                        {
+                            name: 'FCA',
+                            producers: [
+                                {
+                                    id: 1,
+                                    name: 'ОЛІЯР'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
             place_types: {
                 "ZAVOD": "Завод",
                 "COMORA": "Комора",
@@ -188,7 +283,7 @@ export default {
                     lng: 23.9421962
                 }
             },
-            zoom: 6.4,
+            zoom: 6.3,
             options: {
                 mapId: 'e05c23c1b569a6bf',
                 disableDefaultUI: true,

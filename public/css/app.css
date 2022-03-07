@@ -11305,9 +11305,15 @@ body {
 .link-add-culture a:hover {
   color: black;
 }
+@media screen and (max-width: 768px) {
+  .link-add-culture a {
+    display: flex;
+  }
+}
 
 #sidebarTabs {
   display: flex;
+  margin: 0 0.25rem;
 }
 #sidebarTabs li {
   width: 49%;
@@ -11317,6 +11323,11 @@ body {
   border-radius: 8px;
   color: black;
   background: #e7e7e7;
+  transition: 0.4s;
+}
+#sidebarTabs li button:hover {
+  background-color: #e7f1ff;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 #sidebarTabs li button.active {
   background-color: #0d6efd;
@@ -11339,6 +11350,36 @@ body {
   cursor: pointer;
 }
 
+.filters .sell_buy {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0 0.25rem;
+}
+.filters .sell_buy .form-check {
+  padding: 0;
+  margin: 0;
+}
+.filters .sell_buy .form-check .form-check-label {
+  color: white;
+  background-color: #0d6efd;
+  padding: 2px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.filters .sell_buy .form-check .form-check-input {
+  display: none;
+}
+.filters .sell_buy .form-check .form-check-input:checked + .form-check-label {
+  color: black;
+  background: #e7e7e7;
+  transition: 0.4s;
+}
+.filters .sell_buy .form-check .form-check-input:checked + .form-check-label:hover {
+  background-color: #e7f1ff;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
 .filters .filter-item {
   padding: 0.5rem 1rem;
   border-radius: 8px;
@@ -11419,6 +11460,7 @@ body {
   display: flex;
   gap: 18px;
   align-items: center;
+  flex-direction: row;
 }
 .main-menu .main-menu-list #navbarDropdown {
   display: flex;

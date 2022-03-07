@@ -13,7 +13,7 @@ class Culture extends Model
         'user_id',
         'type',
         'termin',
-        'place_id',
+//        'place_id',
         'culture',
         'status',
         'delivery',

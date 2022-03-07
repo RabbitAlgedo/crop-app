@@ -12,7 +12,8 @@
             </nav>
             <div class="card p-3 border-0 mb-3">
                 <div class="d-flex">
-                    <div class="image"> <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" class="rounded" width="155"> </div>
+                    <div class="image">
+                        <img src="https://pracevpraze.cz/images/no_avatar_company.png" class="rounded" width="155"></div>
                     <div class="ms-3 w-100">
                         <div class="mb-3">
                             <h4 class="mb-1 mt-0">{{ $user->name }}</h4>

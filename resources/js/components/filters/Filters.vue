@@ -1,6 +1,6 @@
 <template>
     <div class="filters my-2">
-        <div class="">
+        <div class="sell_buy">
             <div class="form-check">
                 <input class="form-check-input" v-model="filters.status" type="checkbox" value="SELLING" id="SELLCheckBox">
                 <label class="form-check-label" for="SELLCheckBox">

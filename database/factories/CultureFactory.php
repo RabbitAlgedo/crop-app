@@ -15,7 +15,7 @@ class CultureFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1, 10),
-            'place_id' => $this->faker->numberBetween(1, 25),
+//            'place_id' => $this->faker->numberBetween(1, 25),
             'termin' => $this->faker->randomElement(["5", "14", "30"]),
             'culture' => $this->faker->randomElement(['SOY', 'BARLEY', 'CORN']),
             'type' => $this->faker->randomElement(['SELLING', 'BUYING']),

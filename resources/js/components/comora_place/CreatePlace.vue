@@ -23,6 +23,7 @@
                                 />
                             </div>
 
+                            <!-- Тип місця -->
                             <div class="row mb-3">
                                 <label for="place_type" class="col-form-label">Тип</label>
                                 <div class="col-md-6">

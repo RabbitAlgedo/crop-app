@@ -15,8 +15,9 @@ class CreateCulturesTable extends Migration
     {
         Schema::create('cultures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('place_id')->references('id')->on('places');
+            $table->foreignId('user_id');
+//            $table->foreignId('user_id')->references('id')->on('users');
+//            $table->foreignId('place_id')->references('id')->on('places');
             $table->enum('termin', ["5", "14", "30"]);
             $table->enum('culture', ['SOY', 'BARLEY', 'CORN']);
             $table->enum('status', ['IN_PROGRESS', 'STOPED', 'HOLDING']);

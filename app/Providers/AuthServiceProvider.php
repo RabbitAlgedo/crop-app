@@ -16,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
-        Comora::class => ComoraPolicy::class
+//        Comora::class => ComoraPolicy::class
     ];
 
     /**
