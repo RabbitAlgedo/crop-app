@@ -7,15 +7,13 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-html {
-    overflow-x: hidden;
-}
-body {
-    background-color: #f2f2f2 !important;
-}
-.btn-primary {
-    border-radius: 8px !important;
-}
+//Standart
+@import "body";
+
+//Buttons
+@import "buttons";
+
+
 .link-add-culture a {
     color: black;
     text-decoration: none;
@@ -78,9 +76,18 @@ body {
 
         margin: 0 0.25rem;
 
+        @media screen and (max-width: 1580px) {
+            gap: 4px;
+            justify-content: center;
+        }
+
         .form-check {
             padding: 0;
             margin: 0;
+
+            @media screen and (max-width: 1580px) {
+                width: 100%;
+            }
 
             .form-check-label {
                 color: white;
@@ -88,6 +95,11 @@ body {
                 padding: 2px 24px;
                 border-radius: 8px;
                 cursor: pointer;
+
+                @media screen and (max-width: 1580px) {
+                    width: 100%;
+                    text-align: center;
+                }
             }
 
             .form-check-input {
@@ -146,28 +158,9 @@ body {
         }
     }
 }
-.btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
-    border-top-left-radius: 8px !important;
-    border-bottom-left-radius: 8px !important;
-}
-.btn-group>:not(.btn-check)+.btn {
-    border-top-right-radius: 8px !important;
-    border-bottom-right-radius: 8px !important;
-}
-.dropdown-menu {
-    border-radius: 8px !important;
-    border: 0 !important;
-}
-.btn-main {
-    color: #000;
-    background-color: #ffffff !important;
-    border-color: #dddddd !important;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 10%), 0 2px 5px rgb(0 0 0 / 5%), 0 -1px 0 rgb(0 0 0 / 5%), -1px 0 0 rgb(0 0 0 / 10%), 1px 0 0 rgb(0 0 0 / 10%);
-    transition: .4s;
-    &:hover {
-        box-shadow: 0 1px 1px rgb(0 0 0 / 15%), 0 4px 7px rgb(0 0 0 / 5%), 0 -1px 0 rgb(0 0 0 / 5%), -1px 0 0 rgb(0 0 0 / 5%), 1px 0 0 rgb(0 0 0 / 5%);
-    }
-}
+
+
+
 .main-menu {
     background-color: #ebfeec !important;
     .navbar-brand {

@@ -41,6 +41,7 @@ class CultureController extends Controller
             'user_id' => $request->user_id,
             'culture' => $request->culture,
             'termin' => $request->termin,
+            'month' => $request->month,
             'place_id' => $request->place_id,
             'delivery' => $request->delivery,
             'price' => $request->price,

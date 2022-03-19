@@ -28,6 +28,7 @@
         "bootstrap-vue": "^2.21.2",
         "chart.js": "^2.9.4",
         "marker-clusterer-plus": "^2.1.4",
+        "overlapping-marker-spiderfier": "^1.1.4",
         "qs": "^6.10.2",
         "vue-axios": "^3.4.0",
         "vue-chartjs": "^3.5.1",

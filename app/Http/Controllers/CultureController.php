@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Culture;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CultureController extends Controller
 {
@@ -52,11 +54,18 @@ class CultureController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $culture= Culture::where([['user_id', $user->id], ['id', $id]])->first();
+
+        if(empty($culture->user_id)) {
+            return redirect('/access-denied');
+        }
+
+        return view('culture.edit', ['culture' => $culture]);
     }
 
     /**
@@ -75,10 +84,13 @@ class CultureController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $culture = Culture::find($id);
+        $culture->delete();
+
+        return back()->with(['status' => 'Пропозиція успішно видалена!']);
     }
 }

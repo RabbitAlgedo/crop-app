@@ -117,7 +117,7 @@
 
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: #f2f2f2;">
-        © 2022 Всі права захищено:
+        © 2022 Всі права захищено.
         <a class="text-reset fw-bold" href="/">Crop</a>
     </div>
     <!-- Copyright -->

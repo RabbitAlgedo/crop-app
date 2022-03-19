@@ -1,0 +1,34 @@
+//Included to app.scss
+
+.btn-primary {
+    border-radius: $button-radius !important;
+}
+
+.btn-main {
+    color: $button-text-color;
+    background-color: $button-background !important;
+    border-color: $button-border-color !important;
+    transition: $button-transition;
+
+    &:hover {
+        box-shadow: $button-hover-shadow;
+    }
+}
+
+.btn-rounded {
+    border-radius: $button-radius !important;
+}
+
+// For headers dropdown list
+.btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-left-radius: $button-radius  !important;
+    border-bottom-left-radius: $button-radius  !important;
+}
+.btn-group>:not(.btn-check)+.btn {
+    border-top-right-radius: $button-radius  !important;
+    border-bottom-right-radius: $button-radius  !important;
+}
+.dropdown-menu {
+    border-radius: $button-radius  !important;
+    border: 0 !important;
+}

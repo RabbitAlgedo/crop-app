@@ -132,26 +132,6 @@ export default {
                 }
             })
         },
-        // updateMapCenter(location) {
-        //     this.startLocation = {
-        //         lat: location.latLng.lat(),
-        //         lng: location.latLng.lng(),
-        //     }
-        //
-        //     this.form.lat = location.latLng.lat()
-        //     this.form.lng = location.latLng.lng()
-        //
-        //     this.getLocationAddress()
-        // },
-        // getLocationAddress() {
-        //     var geocoder = new google.maps.Geocoder();
-        //
-        //     geocoder.geocode({
-        //         'latLng': this.startLocation
-        //     }, (results) => {
-        //         this.updateAddress(results[1].formatted_address)
-        //     });
-        // },
 
         // Адрес в строці та координати
         updateAddress(address) {

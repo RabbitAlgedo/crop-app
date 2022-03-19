@@ -5,7 +5,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import axios from "axios"
 import VueAxios from "vue-axios"
 import Map from './components/mainMap.vue'
-import GmapCustomMarker from 'vue2-gmap-custom-marker';
+import GmapCustomMarker from 'vue2-gmap-custom-marker'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 Vue.component("gmap-custom-marker", GmapCustomMarker)

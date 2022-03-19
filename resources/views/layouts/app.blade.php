@@ -38,27 +38,27 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto main-menu-list">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-main link-add-culture d-none d-md-block">
+                            <button type="button" class="btn btn-main link-add-culture btn-rounded d-none d-md-block">
                                 <a href="/culture/create" class="btn-link" role="button">Добавити пропозицію</a>
                             </button>
-                            <button type="button" class="btn btn-main link-add-culture d-block d-md-none">
+                            <button type="button" class="btn btn-main link-add-culture btn-rounded d-block d-md-none">
                                 <a href="/culture/create" class="btn-link" role="button"><span class="material-icons-outlined">add</span></a>
                             </button>
-                            <button type="button" class="btn btn-main dropdown-toggle dropdown-toggle-split" id="show_proposal" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="visually-hidden">Продам/Куплю</span>
-                            </button>
-                            <ul class="dropdown-menu w dropdown-menu-end" aria-labelledby="show_proposal">
-                                <li><a class="dropdown-item dropdown-item-with-icon" href="/culture/create">
-                                        <span class="material-icons-outlined">sell</span>
-                                        <span>Продам культуру</span>
-                                    </a>
-                                </li>
-                                <li><a class="dropdown-item dropdown-item-with-icon" href="/culture/create">
-                                        <span class="material-icons-outlined">local_mall</span>
-                                        <span>Куплю культуру</span>
-                                    </a>
-                                </li>
-                            </ul>
+{{--                            <button type="button" class="btn btn-main dropdown-toggle dropdown-toggle-split" id="show_proposal" data-bs-toggle="dropdown" aria-expanded="false">--}}
+{{--                                <span class="visually-hidden">Продам/Куплю</span>--}}
+{{--                            </button>--}}
+{{--                            <ul class="dropdown-menu w dropdown-menu-end" aria-labelledby="show_proposal">--}}
+{{--                                <li><a class="dropdown-item dropdown-item-with-icon" href="/culture/create">--}}
+{{--                                        <span class="material-icons-outlined">sell</span>--}}
+{{--                                        <span>Продам культуру</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                                <li><a class="dropdown-item dropdown-item-with-icon" href="/culture/create">--}}
+{{--                                        <span class="material-icons-outlined">local_mall</span>--}}
+{{--                                        <span>Куплю культуру</span>--}}
+{{--                                    </a>--}}
+{{--                                </li>--}}
+{{--                            </ul>--}}
                         </div>
                         <!-- Authentication Links -->
                         @guest
@@ -71,7 +71,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <button type="button" class="btn btn-main link-add-culture d-none d-md-block">
+                                <button type="button" class="btn btn-main btn-rounded link-add-culture d-none d-md-block">
                                     <a href="{{ route('sklads') }}" class="btn-link" role="button">Склади</a>
                                 </button>
                             </li>
@@ -89,11 +89,6 @@
                                         <span class="visually-hidden">Особистий кабінет</span>
                                     </button>
                                     <ul class="dropdown-menu w dropdown-menu-end" aria-labelledby="show_personal">
-{{--                                        <li><a class="dropdown-item dropdown-item-with-icon" href="{{ route('sklads') }}">--}}
-{{--                                                <span class="material-icons-outlined">maps_home_work</span>--}}
-{{--                                                <span>Склади</span>--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
                                         <li><a class="dropdown-item dropdown-item-with-icon" href="/settings">
                                                 <span class="material-icons-outlined">manage_accounts</span>
                                                 <span>Налаштування</span>
@@ -115,7 +110,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex" href="#" role="button">
+                                <a class="nav-link d-flex" href="{{ route('notifications') }}" role="button">
                                     <span class="material-icons-outlined md-36">notifications</span>
                                 </a>
                             </li>

@@ -18,8 +18,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        User::factory(5)->create();
+        User::factory(5)->create();
 
+        User::factory()->create([
+            'phone' => '000000000'
+        ]);
 //        //make seller producer
 //        User::factory()->create([
 //            'email' => 'seller.p@seller.com',

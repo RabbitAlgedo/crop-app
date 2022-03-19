@@ -4,9 +4,24 @@
             <div class='pin' >
                 <img :src="'/images/icons/cultures/' + culture.culture + '.webp'" :alt="culture.culture" width="12px">
             </div>
-            <span class="culture-price">
-                {{ culture.price }} $
-            </span>
+            <div>
+                <div>
+                    <span class="culture-price">
+                        {{ culture.weight }}т.
+                    </span>
+                    <span class="culture-price">
+                        | {{ culture.price }} $
+                    </span>
+                </div>
+                <div>
+                    <span class="culture-price text-center">
+                        {{ culture.termin }}д.
+                    </span>
+                    <span class="culture-price text-center" v-if="culture.month">
+                        | {{ culture.month }}
+                    </span>
+                </div>
+            </div>
         </div>
         <div v-if="culture.status === 'IN_PROGRESS'" class="pulse"></div>
     </div>
@@ -33,7 +48,7 @@ export default {
     font-size: 8px;
     text-decoration: underline;
 
-    background: #f2f2f2;
+    background: #dddddd;
 }
 .selling .culture-price {
     color: #54ad44;

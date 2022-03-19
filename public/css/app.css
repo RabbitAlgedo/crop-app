@@ -11298,6 +11298,35 @@ body {
   border-radius: 8px !important;
 }
 
+.btn-main {
+  color: #000;
+  background-color: #fff !important;
+  border-color: #ddd !important;
+  transition: 0.4s;
+}
+.btn-main:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 4px 7px rgba(0, 0, 0, 0.05), 0 -1px 0 rgba(0, 0, 0, 0.05), -1px 0 0 rgba(0, 0, 0, 0.05), 1px 0 0 rgba(0, 0, 0, 0.05);
+}
+
+.btn-rounded {
+  border-radius: 8px !important;
+}
+
+.btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
+  border-top-left-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+}
+
+.btn-group > :not(.btn-check) + .btn {
+  border-top-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+
+.dropdown-menu {
+  border-radius: 8px !important;
+  border: 0 !important;
+}
+
 .link-add-culture a {
   color: black;
   text-decoration: none;
@@ -11357,9 +11386,20 @@ body {
   flex-wrap: wrap;
   margin: 0 0.25rem;
 }
+@media screen and (max-width: 1580px) {
+  .filters .sell_buy {
+    gap: 4px;
+    justify-content: center;
+  }
+}
 .filters .sell_buy .form-check {
   padding: 0;
   margin: 0;
+}
+@media screen and (max-width: 1580px) {
+  .filters .sell_buy .form-check {
+    width: 100%;
+  }
 }
 .filters .sell_buy .form-check .form-check-label {
   color: white;
@@ -11367,6 +11407,12 @@ body {
   padding: 2px 24px;
   border-radius: 8px;
   cursor: pointer;
+}
+@media screen and (max-width: 1580px) {
+  .filters .sell_buy .form-check .form-check-label {
+    width: 100%;
+    text-align: center;
+  }
 }
 .filters .sell_buy .form-check .form-check-input {
   display: none;
@@ -11418,32 +11464,6 @@ body {
 }
 .filters .filter-submit:hover {
   background-color: #ebfeec;
-}
-
-.btn-group > .btn:not(:last-child):not(.dropdown-toggle) {
-  border-top-left-radius: 8px !important;
-  border-bottom-left-radius: 8px !important;
-}
-
-.btn-group > :not(.btn-check) + .btn {
-  border-top-right-radius: 8px !important;
-  border-bottom-right-radius: 8px !important;
-}
-
-.dropdown-menu {
-  border-radius: 8px !important;
-  border: 0 !important;
-}
-
-.btn-main {
-  color: #000;
-  background-color: #ffffff !important;
-  border-color: #dddddd !important;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.05), 0 -1px 0 rgba(0, 0, 0, 0.05), -1px 0 0 rgba(0, 0, 0, 0.1), 1px 0 0 rgba(0, 0, 0, 0.1);
-  transition: 0.4s;
-}
-.btn-main:hover {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 4px 7px rgba(0, 0, 0, 0.05), 0 -1px 0 rgba(0, 0, 0, 0.05), -1px 0 0 rgba(0, 0, 0, 0.05), 1px 0 0 rgba(0, 0, 0, 0.05);
 }
 
 .main-menu {

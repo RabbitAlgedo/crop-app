@@ -4,12 +4,25 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
+            {{--Хлібні крошки--}}
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/">Головна</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Особистий кабінет</li>
                 </ol>
             </nav>
+
+            {{--Відсутні склади!--}}
+            @if (!empty($without_sklads))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <div>
+                        {{ $without_sklads }}
+                        <a href="{{ route('sklads') }}" class="btn-link">Створити склад</a>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <div class="card p-3 border-0 mb-3">
                 <div class="d-flex">
                     <div class="image">
@@ -21,8 +34,8 @@
                             <p class="mb-0">{{ $user->email }}</p>
                         </div>
                         <div>
-                            <a type="button" href="/settings" class="btn btn btn-outline-primary">Налаштування</a>
-                            <a type="button" href="/" class="btn btn btn-primary ml-2">Карта</a>
+                            <a type="button" href="/settings" class="btn btn-rounded btn-outline-primary">Налаштування</a>
+                            <a type="button" href="/" class="btn btn-rounded btn-primary ml-2">Карта</a>
                         </div>
                     </div>
                 </div>
@@ -70,10 +83,14 @@
                                             <td>Торг</td>
                                         @endif
                                         <td>{{ $culture->delivery }}</td>
-                                        <td>{{ $culture->place_id }}</td>
-                                        <td style="display: flex">
-                                            <a href="/place/{{ $culture->id }}/edit"><span class="material-icons-outlined">edit</span></a>
+                                        <td>{{ $places[$culture->place_id - 1]['name'] }}</td>
 
+                                        {{--Кнопки редагування--}}
+                                        <td style="display: flex">
+                                            {{--Кнопка редагування--}}
+                                            {{--<a href="/place/{{ $culture->id }}/edit"><span class="material-icons-outlined">edit</span></a>--}}
+
+                                            {{--Кнопка видалення--}}
                                             <form id="remove-culture-id{{ $culture->id }}" action="/culture/{{ $culture->id }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -87,6 +104,8 @@
                             @endforeach
                             </tbody>
                         </table>
+
+                        {{--Кнопка нової пропозиції--}}
                         <div>
                             <a href="/culture/create" class="btn btn-primary col-md-2 d-flex gap-2"><span class="material-icons-outlined">add</span> Нова пропозиція</a>
                         </div>
@@ -130,10 +149,14 @@
                                             <td>Торг</td>
                                         @endif
                                         <td>{{ $culture->delivery }}</td>
-                                        <td>{{ $culture->place_id }}</td>
-                                        <td style="display: flex">
-                                            <a href="/culture/{{ $culture->id }}/edit"><span class="material-icons-outlined">edit</span></a>
+                                        <td>{{ $places[$culture->place_id - 1]['name'] }}</td>
 
+                                        {{--Кнопки редагування--}}
+                                        <td style="display: flex">
+                                            {{--Кнопка редагування--}}
+                                            {{--<a href="/culture/{{ $culture->id }}/edit"><span class="material-icons-outlined">edit</span></a>--}}
+
+                                            {{--Кнопка видалення--}}
                                             <form id="remove-culture-id{{ $culture->id }}" action="/culture/{{ $culture->id }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')

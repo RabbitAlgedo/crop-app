@@ -30,6 +30,7 @@
                 :options="options"
                 style="width:100%;  height: 90vh;"
             >
+                <!--Маркери сховищ-->
                 <div v-for="place in markers.type">
                     <gmap-custom-marker v-show="filters.type.includes(place.place_type)"
                                         :key="place.id"
@@ -39,6 +40,8 @@
                         <place-icon :place="place" v-on:openInfoWindow="openInfoWindow" />
                     </gmap-custom-marker>
                 </div>
+
+                <!--Маркери культур (пропозицій)-->
                 <div v-for="culture in markers.cultures">
                     <gmap-custom-marker v-show="filters.culture.includes(culture.culture) && filters.delivery.includes(culture.delivery) && filters.status.includes(culture.type)"
                                         :key="culture.id"
@@ -49,6 +52,7 @@
                     </gmap-custom-marker>
                 </div>
 
+                <!--EXW | FCA-->
                 <div v-for="region in delivery">
                     <gmap-custom-marker :key="region.id"
                                         :draggable="false"
@@ -57,6 +61,7 @@
                     </gmap-custom-marker>
                 </div>
 
+                <!--Інфо локації маркера-->
                 <gmap-info-window
                     v-if="selectedLocation !== null"
                     :opened="infoWindow.show"
@@ -66,7 +71,7 @@
                         <div class="card-body p-0">
                             <div class="card-header d-flex justify-content-between">
                                 {{selectedLocation.name}}
-                                <favorite-button />
+                                <!--<favorite-button />-->
                             </div>
                             <ul class="list-group list-group-flush">
                                 <h5 class="list-group-item card-title card-selected-padding">{{this.place_types[selectedLocation.place_type]}}</h5>
@@ -78,6 +83,7 @@
                     </div>
                 </gmap-info-window>
 
+                <!--Інфо культури маркера-->
                 <gmap-info-window
                     v-if="selectedCulture !== null"
                     :opened="infoWindowCulture.show"
@@ -88,8 +94,8 @@
                             <div class="card-header">
                                 {{this.culture_types[selectedCulture.type]}}
                             </div>
-                            <h5 class="card-title card-selected-padding">{{this.culture_names[selectedCulture.culture]}}</h5>
                             <ul class="list-group list-group-flush">
+                                <h5 class="list-group-item card-title card-selected-padding">{{this.culture_names[selectedCulture.culture]}}</h5>
                                 <li class="list-group-item">Тип: {{selectedCulture.delivery}}</li>
                                 <li class="list-group-item">Ціна: {{selectedCulture.price}}$ за 1т.</li>
                                 <li class="list-group-item">Термін: {{selectedCulture.termin}}д.</li>

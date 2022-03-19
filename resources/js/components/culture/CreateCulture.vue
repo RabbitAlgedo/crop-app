@@ -21,15 +21,38 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!--Вибір складу-->
                             <div class="form-group my-2">
-                                <label for="culture-name">Зерно</label>
+                                <div v-if="this.isLoaded">
+                                    <div v-if="this.places.length">
+                                        <label>Сховище</label>
+                                        <select class="form-select select-filter"
+                                                id="culture-place"
+                                                v-model="form.place">
+                                            <option value="" disabled hidden>Виберіть склад</option>
+                                            <option v-for="(place, index) in places" v-bind:value="{id: place.id, index: index}">{{ place.name }}</option>
+                                        </select>
+                                    </div>
+
+                                    <div v-else>
+                                        <div class="alert alert-warning fade show d-flex" role="alert">
+                                            У вас ще немає складу!
+                                            <a href="/sklads" target="_blank" class="btn-link">Створити склад</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group my-2">
+                                <label>Зерно</label>
                                 <select class="form-select select-filter"
                                         id="culture-name"
                                         v-model="form.culture">
-                                    <option value="center" disabled hidden>Зерно</option>
-                                    <option value="SOY">Соя</option>
-                                    <option value="BARLEY">Ячмінь</option>
-                                    <option value="CORN">Кукурудза</option>
+                                            <option value="" disabled hidden>Виберіть культуру</option>
+                                            <option value="SOY">Соя</option>
+                                            <option value="BARLEY">Ячмінь</option>
+                                            <option value="CORN">Кукурудза</option>
                                 </select>
                             </div>
                             <div class="form-group my-2">
@@ -46,9 +69,11 @@
                                     <span class="input-group-text" id="price-text">$</span>
                                 </div>
                             </div>
+
+                            <!--Дні чи місяць-->
                             <div class="row mb-3">
-                                <label for="termin" class="col-form-label">Активно днів</label>
-                                <div class="col-md-6">
+                                <label class="col-form-label">Період реалізації</label>
+                                <div class="col-md-6 d-flex g-3">
                                     <div class="btn-group" role="group" aria-label="Тип складу">
                                         <input type="radio" class="btn-check" v-model="form.termin" id="termin_5" value="5" autocomplete="off">
                                         <label class="btn btn-outline-primary" for="termin_5">5</label>
@@ -59,10 +84,22 @@
                                         <input type="radio" class="btn-check" v-model="form.termin" id="termin_30" value="30" autocomplete="off">
                                         <label class="btn btn-outline-primary" for="termin_30">30</label>
                                     </div>
+                                    <label class="col-form-label">  днів</label>
                                 </div>
                             </div>
+
                             <div class="row mb-3">
-                                <label for="delivery" class="col-form-label">Тип доставки</label>
+                                <div class="col-md-6">
+                                    <label class="col-form-label">Планово</label>
+                                    <div class="btn-group" role="group" aria-label="Тип складу">
+                                        <input type="month" v-model="form.month" id="termin_month" autocomplete="off">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Тип доставки-->
+                            <div class="row mb-3">
+                                <label class="col-form-label">Тип доставки</label>
                                 <div class="col-md-6">
                                     <div class="btn-group" role="group" aria-label="Тип складу">
                                         <input type="radio" class="btn-check" v-model="form.delivery" id="fca_delivery" value="FCA" autocomplete="off">
@@ -76,12 +113,20 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!--Створення пропозиції-->
                             <button type="submit" class="btn btn-primary my-2">Створити</button>
                         </form>
                     </div>
+
+                    <!--Карта-->
                     <div class="col-md-8">
-                        <gmap-map :center="startLocation" :zoom="zoom" :options="options" style="width: 100%; height: 550px;">
-                            <gmap-marker :position="cultureLocation" :draggable="true" @drag="updateCoordinates" @dragend="updateMapCenter"></gmap-marker>
+                        <gmap-map :center="mapCenter" :zoom="zoom" :options="options" style="width: 100%; height: 550px;">
+                            <gmap-marker v-if="isLoaded" v-for="place in places"
+                                         :position="{ lat: parseFloat(place.lat), lng: parseFloat(place.lng) }"
+                                         :draggable="false"
+                                         :key="place.id">
+                            </gmap-marker>
                         </gmap-map>
                     </div>
                 </div>
@@ -96,35 +141,32 @@ export default {
     data() {
         return {
             user_id: null,
-            zoom: 7.14,
+            zoom: 6,
             info: {
                 display: false,
                 status: ''
             },
-            startLocation: {
+            isLoaded: false,
+            mapCenter: {
                 lat: 49.1280915,
                 lng: 30.8602691
             },
-            cultureLocation: {
-                lat: 49.1280915,
-                lng: 30.8602691
-            },
+            places: [],
             form: {
-                culture: 'SOY',
-                place_id: 1,
+                culture: "",
+                place: "",
                 termin: null,
+                month: null,
                 user_id: null,
                 type: null,
                 delivery: null,
                 price: 0,
                 weight: 0,
-                lat: null,
-                lng: null
             },
             options: {
                 mapId: 'e05c23c1b569a6bf',
                 disableDefaultUI: true,
-                minZoom: 6.6,
+                minZoom: 6,
                 clickableIcons: false,
                 restriction: {
                     latLngBounds: {
@@ -140,26 +182,22 @@ export default {
     },
     mounted() {
         this.getUserId()
+        this.getUserPlaces()
     },
     methods: {
         async create() {
-            var lat = this.form.lat
-            lat = lat.toString()
-
-            var lng = this.form.lng
-            lng = lng.toString()
-
             await this.axios.post('/api/culture', {
                 user_id: this.user_id,
                 termin: this.form.termin,
-                place_id: this.form.place_id,
+                month: this.form.month,
+                place_id: this.form.place.id,
                 culture: this.form.culture,
                 type: this.form.type,
                 delivery: this.form.delivery,
                 price: this.form.price,
                 weight: this.form.weight,
-                lat: lat,
-                lng: lng,
+                lat: this.places[this.form.place.index].lat,
+                lng: this.places[this.form.place.index].lng,
                 _method: 'post'
             })
                 .then((response) => {
@@ -173,20 +211,11 @@ export default {
         getUserId() {
             this.user_id = document.getElementById("user_id").getAttribute('data-user-id')
         },
-        updateCoordinates(location) {
-            this.placeLocation = {
-                lat: location.latLng.lat(),
-                lng: location.latLng.lng(),
-            };
-        },
-        updateMapCenter(location) {
-            this.startLocation = {
-                lat: location.latLng.lat(),
-                lng: location.latLng.lng(),
-            }
-
-            this.form.lat = location.latLng.lat()
-            this.form.lng = location.latLng.lng()
+        async getUserPlaces() {
+            await this.axios.get('/api/place?user_id=' + this.user_id).then((response) => {
+                this.places = response.data.places
+                this.isLoaded = true
+            });
         }
     }
 }

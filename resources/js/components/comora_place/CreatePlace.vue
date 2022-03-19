@@ -14,8 +14,7 @@
                                 <input type="text" id="name" v-model="form.name" class="form-control">
                             </div>
                             <div class="form-group my-2">
-                                <label for="address">Адрес</label>
-<!--                                <input type="text" id="address" v-model="form.address" class="form-control" disabled>-->
+                                <label>Адрес</label>
                                 <gmap-autocomplete @place_changed="updateAddress"
                                                    id="address"
                                                    class="form-control"
