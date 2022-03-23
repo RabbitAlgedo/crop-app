@@ -8,11 +8,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>window.Laravel = {csrfToken: '{{ csrf_token() }}'}</script>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} | Торговля Зерном</title>
 
     <!-- Scripts -->
 {{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
 
+    <link rel="icon" href="/logo.svg" />
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
