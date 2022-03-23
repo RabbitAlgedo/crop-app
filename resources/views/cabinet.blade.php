@@ -24,7 +24,7 @@
             @endif
 
             <div class="card p-3 border-0 mb-3">
-                <div class="d-flex">
+                <div class="d-md-flex d-block">
                     <div class="image">
                         <img src="https://pracevpraze.cz/images/no_avatar_company.png" class="rounded" width="155"></div>
                     <div class="ms-3 w-100">
@@ -40,6 +40,8 @@
                     </div>
                 </div>
             </div>
+
+            {{--Статус операцій--}}
             @if (session('status'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('status') }}
@@ -106,8 +108,8 @@
                         </table>
 
                         {{--Кнопка нової пропозиції--}}
-                        <div>
-                            <a href="/culture/create" class="btn btn-primary col-md-2 d-flex gap-2"><span class="material-icons-outlined">add</span> Нова пропозиція</a>
+                        <div style="width: max-content">
+                            <a href="/culture/create" class="btn btn-primary d-flex gap-2"><span class="material-icons-outlined">add</span> Нова пропозиція</a>
                         </div>
                     </div>
                 </div>
@@ -170,8 +172,8 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div>
-                            <a href="/culture/create" class="btn btn-primary col-md-2 d-flex gap-2"><span class="material-icons-outlined">add</span> Нова пропозиція</a>
+                        <div style="width: max-content">
+                            <a href="/culture/create" class="btn btn-primary d-flex gap-2"><span class="material-icons-outlined">add</span> Нова пропозиція</a>
                         </div>
                     </div>
                 </div>

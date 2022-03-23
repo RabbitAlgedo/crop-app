@@ -55,11 +55,11 @@ class PlaceController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Place $place)
     {
-        //
+        return view('place.show', ['place' => $place, 'user' => $place->user()->first(), 'cultures' => $place->cultures()->get()]);
     }
 
     /**
@@ -71,13 +71,13 @@ class PlaceController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
-        $comora = Place::where([['user_id', $user->id], ['id', $id]])->first();
+        $place = Place::where([['user_id', $user->id], ['id', $id]])->first();
 
-        if(empty($comora->user_id)) {
+        if(empty($place->user_id)) {
             return redirect('/access-denied');
         }
 
-        return view('place.edit', ['place' => $comora]);
+        return view('place.edit', ['place' => $place]);
     }
 
     /**

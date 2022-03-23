@@ -5,6 +5,7 @@
                 <div class="row">
                     <div v-if="info.display" class="alert alert-success alert-dismissible fade show" role="alert">
                         {{info.status}}
+                        <a href="/culture/create">Створити пропозицію</a>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" @click="info.display = false"></button>
                     </div>
                     <div class="col-md-4">
@@ -39,6 +40,8 @@
                             <button type="submit" class="btn btn-primary my-2">Зберегти</button>
                         </form>
                     </div>
+
+                    <!-- Карта -->
                     <div class="col-md-8">
                         <gmap-map :center="currentPlace" :zoom="zoom" :options="options" style="width: 100%; height: 350px;">
                             <gmap-marker :position="currentPlace" :draggable="false"></gmap-marker>

@@ -10,32 +10,22 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="row mb-3">
-                            <label for="user_for" class="col-md-4 col-form-label text-md-end">Зареєструватись як</label>
-                            <div class="col-md-6">
-                                <div class="btn-group" role="group" aria-label="Зареєструватись як">
-                                    <input type="radio" class="btn-check" name="user_for" id="user_for_seller" value="SELLER" autocomplete="off" checked>
-                                    <label class="btn btn-outline-primary" for="user_for_seller">Продавець</label>
-
-                                    <input type="radio" class="btn-check" name="user_for" id="user_for_buyer" value="BUYER" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="user_for_buyer">Покупець</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
                             <label for="user_type" class="col-md-4 col-form-label text-md-end">Тип</label>
-                            <div class="col-md-6">
-                                <div class="btn-group" role="group" aria-label="Тип користувача">
-                                    <input type="radio" class="btn-check user_type_producer" name="user_type" id="user_type_producer" value="PRODUCER" autocomplete="off">
-                                    <label class="btn btn-outline-primary user_type_producer" for="user_type_producer">Виробник</label>
+                            <div class="col-md-6 d-flex flex-wrap gap-2">
+                                <input type="radio" class="btn-check" name="user_type" id="user_type_farmer_producer" value="FARMER_PRODUCER">
+                                <label class="btn btn-outline-primary" for="user_type_farmer_producer">Фермер Виробник</label>
 
-                                    <input disabled type="radio" class="btn-check user_type_processor" name="user_type" id="user_type_processor" value="PROCESSOR" autocomplete="off">
-                                    <label class="btn d-none btn-outline-primary user_type_processor" for="user_type_processor">Переробник</label>
+                                <input type="radio" class="btn-check" name="user_type" id="user_type_trader" value="TRADER">
+                                <label class="btn btn-outline-primary" for="user_type_trader">Трейдер</label>
 
-                                    <input type="radio" class="btn-check" name="user_type" id="user_type_traider" value="TRAIDER" autocomplete="off">
-                                    <label class="btn btn-outline-primary" for="user_type_traider">Трейдер</label>
+                                <input type="radio" class="btn-check" name="user_type" id="user_type_processor" value="PROCESSOR">
+                                <label class="btn btn-outline-primary" for="user_type_processor">Переробник</label>
 
-                                </div>
+                                <input type="radio" class="btn-check" name="user_type" id="user_type_trader_processor" value="TRADER_PROCESSOR">
+                                <label class="btn btn-outline-primary" for="user_type_trader_processor">Трейдер Переробник</label>
+
+                                <input type="radio" class="btn-check" name="user_type" id="user_type_distributor" value="DISTRIBUTOR">
+                                <label class="btn btn-outline-primary" for="user_type_distributor">Дистриб'ютор</label>
                             </div>
                         </div>
 

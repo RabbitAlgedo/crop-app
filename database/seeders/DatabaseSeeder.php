@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(5)->create();
-
-        User::factory()->create([
-            'phone' => '000000000'
-        ]);
+//        User::factory(5)->create();
+//
+//        User::factory()->create([
+//            'phone' => '000000000'
+//        ]);
 //        //make seller producer
 //        User::factory()->create([
 //            'email' => 'seller.p@seller.com',
@@ -60,29 +60,29 @@ class DatabaseSeeder extends Seeder
 
 //        Place::factory(3)->create();
 
-        Culture::factory(10)->create();
+//        Culture::factory(10)->create();
 
-//        CulturePrice::factory()->create([
-//           'name' => 'соя',
-//           'culture_id' => 1,
-//           'price_sell' => 1200,
-//           'price_buy' => 1150,
-//           'date' => Carbon::yesterday()
-//        ]);
-//        CulturePrice::factory()->create([
-//            'name' => 'соя',
-//            'culture_id' => 1,
-//            'price_sell' => 1100,
-//            'price_buy' => 1050,
-//            'date' => Carbon::now()->subDay(2)
-//        ]);
-//        CulturePrice::factory()->create([
-//            'name' => 'соя',
-//            'culture_id' => 1,
-//            'price_sell' => 1160,
-//            'price_buy' => 1190,
-//            'date' => Carbon::now()->subDay(5)
-//        ]);
+        CulturePrice::factory()->create([
+           'name' => 'соя',
+           'culture_id' => 1,
+           'price_sell' => 1200,
+           'price_buy' => 1150,
+           'date' => Carbon::yesterday()
+        ]);
+        CulturePrice::factory()->create([
+            'name' => 'соя',
+            'culture_id' => 1,
+            'price_sell' => 1100,
+            'price_buy' => 1050,
+            'date' => Carbon::now()->subDay(2)
+        ]);
+        CulturePrice::factory()->create([
+            'name' => 'соя',
+            'culture_id' => 1,
+            'price_sell' => 1160,
+            'price_buy' => 1190,
+            'date' => Carbon::now()->subDay(5)
+        ]);
 //
 //        CulturePrice::factory()->create([
 //            'name' => 'ячмінь',

@@ -44,7 +44,7 @@ Vue.use(VueGoogleMaps, {
     load: {
         key: 'AIzaSyBX9VzP4EtgebB1iQw6L-eAbOLxdJR7yKI',
         libraries: 'places',
-        map_ids: 'e05c23c1b569a6bf',
+        // map_ids: 'e05c23c1b569a6bf',
         language: 'uk'
     }
 })

@@ -52,8 +52,8 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div>
-                                <a href="/place/create" class="btn btn-primary col-md-2 d-flex gap-2"><span class="material-icons-outlined">add</span> Добавити комору</a>
+                            <div style="width: max-content">
+                                <a href="/place/create" class="btn btn-primary d-flex gap-2"><span class="material-icons-outlined">add</span> Добавити комору</a>
                             </div>
                         </div>
                     </div>
@@ -94,8 +94,8 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div>
-                                <a href="/place/create" class="btn btn-primary col-md-2 d-flex gap-2"><span class="material-icons-outlined">add</span> Добавити завод</a>
+                            <div style="width: max-content">
+                                <a href="/place/create" class="btn btn-primary d-flex gap-2"><span class="material-icons-outlined">add</span> Добавити завод</a>
                             </div>
                         </div>
                     </div>
@@ -136,8 +136,8 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div>
-                                <a href="/place/create" class="btn btn-primary col-md-2 d-flex gap-2"><span class="material-icons-outlined">add</span> Добавити Елеватор</a>
+                            <div style="width: max-content">
+                                <a href="/place/create" class="btn btn-primary d-flex gap-2"><span class="material-icons-outlined">add</span> Добавити Елеватор</a>
                             </div>
                         </div>
                     </div>
