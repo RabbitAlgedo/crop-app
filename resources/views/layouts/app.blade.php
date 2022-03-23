@@ -73,7 +73,7 @@
                         @else
                             <li class="nav-item">
                                 <button type="button" class="btn btn-main btn-rounded link-add-culture d-none d-md-block">
-                                    <a href="{{ route('sklads') }}" class="btn-link" role="button">Склади</a>
+                                    <a href="{{ route('sklads') }}" class="btn-link" role="button">Внесення локації</a>
                                 </button>
                             </li>
                             <li class="nav-item dropdown">

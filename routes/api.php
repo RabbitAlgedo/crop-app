@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CultureController;
+use App\Http\Controllers\Api\CulturePriceController;
 use App\Http\Controllers\Api\PlaceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/place', PlaceController::class);
-Route::resource('/culture', CultureController::class);
+Route::group(['middleware' => 'api'], function () {
+    Route::resource('/place', PlaceController::class);
+    Route::resource('/culture', CultureController::class);
 
-Route::get('/culture-prices', \App\Http\Controllers\Api\CulturePriceController::class);
+    Route::get('/culture-prices', CulturePriceController::class);
+});

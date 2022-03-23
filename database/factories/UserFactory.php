@@ -19,6 +19,7 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->unique()->phoneNumber(),
+            'user_name' => $this->faker->name(),
 //            'user_for' => $this->faker->randomElement(['SELLER', 'BUYER']),
             'user_type' => $this->faker->randomElement(['FARMER_PRODUCER', 'TRADER', 'PROCESSOR', 'TRADER_PROCESSOR', 'DISTRIBUTOR']),
             'email_verified_at' => now(),

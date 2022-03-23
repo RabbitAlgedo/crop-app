@@ -29,7 +29,7 @@
                         <img src="https://pracevpraze.cz/images/no_avatar_company.png" class="rounded" width="155"></div>
                     <div class="ms-3 w-100">
                         <div class="mb-3">
-                            <h4 class="mb-1 mt-0">{{ $user->name }}</h4>
+                            <h4 class="mb-1 mt-0">{{ $user->name }} - {{ $user->user_name }}</h4>
                             <p class="mb-0">{{ $user->phone }}</p>
                             <p class="mb-0">{{ $user->email }}</p>
                         </div>

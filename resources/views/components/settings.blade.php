@@ -26,8 +26,12 @@
                                     @csrf
                                     @method('PUT')
                                     <div class="form-group my-2">
-                                        <label for="name">Ім`я</label>
+                                        <label for="name">Назва юр. особи</label>
                                         <input type="text" name="name" class="form-control" value="{{ $user->name }}">
+                                    </div>
+                                    <div class="form-group my-2">
+                                        <label for="user_name">Ім'я</label>
+                                        <input type="text" name="user_name" class="form-control" value="{{ $user->user_name }}">
                                     </div>
                                     <div class="form-group my-2">
                                         <label for="email">Пошта</label>

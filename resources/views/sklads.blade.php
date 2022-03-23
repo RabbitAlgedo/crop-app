@@ -8,7 +8,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Головна</a></li>
                         <li class="breadcrumb-item"><a href="/cabinet">Особистий кабінет</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Склади</li>
+                        <li class="breadcrumb-item active" aria-current="page">Внесення локації (Незалежно закупка чи продаж)</li>
                     </ol>
                 </nav>
                 @if (session('message_place'))
@@ -20,7 +20,7 @@
                 <div class="card border-0 my-3">
                     <div class="card-body">
                         <div>
-                            <p class="h4">Розміщення комори</p>
+                            <p class="h4">Локація Складу Комори</p>
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -62,7 +62,7 @@
                 <div class="card border-0 my-3">
                     <div class="card-body">
                         <div>
-                            <p class="h4">Розміщення Заводу</p>
+                            <p class="h4">Локація Заводу</p>
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
@@ -104,7 +104,7 @@
                 <div class="card border-0 my-3">
                     <div class="card-body">
                         <div>
-                            <p class="h4">Розміщення Елеватору</p>
+                            <p class="h4">Локація Елеватору</p>
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
