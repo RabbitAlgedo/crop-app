@@ -48,6 +48,10 @@ Vue.use(VueGoogleMaps, {
         language: 'uk'
     }
 })
+
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
+
 const map = new Vue({
     el: '#map',
     render: h => h(Map)
