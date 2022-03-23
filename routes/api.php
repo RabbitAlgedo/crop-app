@@ -21,9 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'api'], function () {
-    Route::resource('/place', PlaceController::class);
-    Route::resource('/culture', CultureController::class);
+Route::resource('/place', PlaceController::class);
+Route::resource('/culture', CultureController::class);
 
-    Route::get('/culture-prices', CulturePriceController::class);
-});
+Route::get('/culture-prices', CulturePriceController::class);
+
