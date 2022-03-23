@@ -21,8 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/place', PlaceController::class);
-Route::resource('/culture', CultureController::class);
+Route::apiResource('/place', PlaceController::class);
+Route::apiResource('/culture', CultureController::class);
 
 Route::get('/culture-prices', CulturePriceController::class);
 
