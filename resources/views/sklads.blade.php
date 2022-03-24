@@ -17,6 +17,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
+
+                {{--Добавлення Комори Складу--}}
                 <div class="card border-0 my-3">
                     <div class="card-body">
                         <div>
@@ -59,6 +61,7 @@
                     </div>
                 </div>
 
+                {{--Добавлення Заводу--}}
                 <div class="card border-0 my-3">
                     <div class="card-body">
                         <div>
@@ -101,47 +104,48 @@
                     </div>
                 </div>
 
-                <div class="card border-0 my-3">
-                    <div class="card-body">
-                        <div>
-                            <p class="h4">Локація Елеватору</p>
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Назва</th>
-                                    <th scope="col">Адрес</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($places as $place)
-                                    @if($place->place_type === 'ELEVATOR')
-                                        <tr>
-                                            <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $place->name }}</td>
-                                            <td>{{ $place->address }}</td>
-                                            <td style="display: flex">
-                                                <a href="/place/{{ $place->id }}/edit"><span class="material-icons-outlined">edit</span></a>
+                {{--Добавлення Елеватору--}}
+{{--                <div class="card border-0 my-3">--}}
+{{--                    <div class="card-body">--}}
+{{--                        <div>--}}
+{{--                            <p class="h4">Локація Елеватору</p>--}}
+{{--                            <table class="table table-striped">--}}
+{{--                                <thead>--}}
+{{--                                <tr>--}}
+{{--                                    <th scope="col">#</th>--}}
+{{--                                    <th scope="col">Назва</th>--}}
+{{--                                    <th scope="col">Адрес</th>--}}
+{{--                                </tr>--}}
+{{--                                </thead>--}}
+{{--                                <tbody>--}}
+{{--                                @foreach($places as $place)--}}
+{{--                                    @if($place->place_type === 'ELEVATOR')--}}
+{{--                                        <tr>--}}
+{{--                                            <th scope="row">{{ $loop->iteration }}</th>--}}
+{{--                                            <td>{{ $place->name }}</td>--}}
+{{--                                            <td>{{ $place->address }}</td>--}}
+{{--                                            <td style="display: flex">--}}
+{{--                                                <a href="/place/{{ $place->id }}/edit"><span class="material-icons-outlined">edit</span></a>--}}
 
-                                                <form id="remove-place-id{{ $place->id }}" action="/place/{{ $place->id }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <div onclick="document.forms['remove-place-id{{ $place->id }}'].submit();" style="color: #cc3737" type="submit">
-                                                        <span class="material-icons-outlined">delete_outline</span>
-                                                    </div>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endif
-                                @endforeach
-                                </tbody>
-                            </table>
-                            <div style="width: max-content">
-                                <a href="/place/create" class="btn btn-primary d-flex gap-2"><span class="material-icons-outlined">add</span> Добавити Елеватор</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                                                <form id="remove-place-id{{ $place->id }}" action="/place/{{ $place->id }}" method="POST">--}}
+{{--                                                    @csrf--}}
+{{--                                                    @method('DELETE')--}}
+{{--                                                    <div onclick="document.forms['remove-place-id{{ $place->id }}'].submit();" style="color: #cc3737" type="submit">--}}
+{{--                                                        <span class="material-icons-outlined">delete_outline</span>--}}
+{{--                                                    </div>--}}
+{{--                                                </form>--}}
+{{--                                            </td>--}}
+{{--                                        </tr>--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
+{{--                                </tbody>--}}
+{{--                            </table>--}}
+{{--                            <div style="width: max-content">--}}
+{{--                                <a href="/place/create" class="btn btn-primary d-flex gap-2"><span class="material-icons-outlined">add</span> Добавити Елеватор</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
 
         </div>
